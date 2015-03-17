@@ -20,8 +20,7 @@ public:
 	void AddEdge(const Edge& edge);
 	void PrintNeighbors();
 
-	
-
+	bool m_wasVisited;
 	int m_iNodeNumber;
 };
 
@@ -31,10 +30,14 @@ class Graph
 public:
 	Graph() {}
 
+	GraphNode* GetNode(int a_nodeID);
 	void AddNode(GraphNode * a_pNode);
 	bool RemoveNode(const GraphNode * a_pNode);
 
+	void ResetVisited();
 	void PrintGraph();
+
+	bool SearchDFS(GraphNode * a_pStart, GraphNode * a_pEnd);
 
 private:
 	NodeList m_aNodes;
@@ -46,7 +49,7 @@ struct Edge
 	Edge(GraphNode * a_pStart, GraphNode * a_pEnd, float a_fCost);
 
 	GraphNode * m_pStart;
-	GraphNode * m_pEnd;
+	GraphNode * m_pEnd; 
 
 	float m_fCost;
 };
